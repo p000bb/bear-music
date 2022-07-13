@@ -1,11 +1,27 @@
 <script setup>
+import { onMounted } from "vue";
+import { useRoute } from "vue-router";
+
 import { ref } from "vue";
-const active = ref("home");
+const active = ref("");
 const activeClass = (tip) => {
   return active.value === tip ? "active" : "";
 };
 const emits = defineEmits(["toPath"]);
-
+const route = new useRoute();
+onMounted(() => {
+  let name = "";
+  switch (route.name) {
+    case "home":
+      name = "home";
+      break;
+    case "rank":
+      name = "rank";
+      break;
+  }
+  console.log(name)
+  active.value = name;
+});
 // 路由跳转
 const go = (path) => {
   active.value = path;

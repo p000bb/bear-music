@@ -15,6 +15,12 @@ const router = createRouter({
       component: () => import("../views/Home/index.vue"),
       layout: "MainLayout",
     },
+    {
+      path: "/rank",
+      name: "rank",
+      component: () => import("../views/Rank/index.vue"),
+      layout: "MainLayout",
+    },
   ],
 });
 

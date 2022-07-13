@@ -63,5 +63,7 @@ onMounted(async () => {
   position: absolute;
   padding-right: 3px;
   z-index: 1;
+  display: flex;
+  align-items: center;
 }
 </style>

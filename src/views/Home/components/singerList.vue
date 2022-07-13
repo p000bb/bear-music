@@ -14,11 +14,7 @@ onMounted(async () => {
     <div class="list">
       <div class="item-card" v-for="(item, index) in list" :key="index">
         <div>
-          <el-image
-            style="width: 100%; height: 100%; border-radius: 50%"
-            :src="item.picUrl"
-            fit="cover"
-          />
+          <el-image class="el-image" :src="item.picUrl" fit="cover" />
         </div>
         <p class="name center">{{ item.name }}</p>
         <p class="num center">歌曲数：{{ item.musicSize }}</p>
@@ -40,6 +36,9 @@ onMounted(async () => {
   padding: 0 10px 25px;
   cursor: pointer;
 }
+.item-card > div {
+  display: flex;
+}
 .name {
   font-weight: 700;
   font-size: 14px;
@@ -54,5 +53,11 @@ onMounted(async () => {
 }
 .center {
   text-align: center;
+}
+.el-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
 }
 </style>
