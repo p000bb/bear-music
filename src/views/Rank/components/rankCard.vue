@@ -4,10 +4,14 @@ import { CaretRight } from "@element-plus/icons-vue";
 const props = defineProps({
   data: Object,
 });
+const emits = defineEmits(["toPath"]);
+const toPath = (val) => {
+  emits("toPath", `/rank/rank-detail?id=${val.id}`);
+};
 </script>
 
 <template>
-  <div class="rank-card">
+  <div class="rank-card shadow">
     <div class="header">
       <h3>{{ props.data.name }}</h3>
       <p>{{ props.data.updateFrequency }}</p>
@@ -18,7 +22,13 @@ const props = defineProps({
         {{ numTransform(props.data.playCount) }}
       </div>
       <div class="img">
-        <el-image class="el-image" :src="props.data.coverImgUrl" fit="cover" />
+        <el-image
+          class="el-image"
+          :src="props.data.coverImgUrl"
+          fit="cover"
+          lazy
+          @click="toPath(props.data)"
+        />
       </div>
       <div class="list">
         <div v-for="(item, index) in props.data.tracks" :key="index">
@@ -35,7 +45,7 @@ const props = defineProps({
 </template>
 <style lang="less" scoped>
 .rank-card {
-  padding: 10px;
+  padding: 5px 10px 15px 10px;
   .header {
     display: flex;
     justify-content: space-between;

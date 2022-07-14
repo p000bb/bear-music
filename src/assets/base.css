@@ -72,3 +72,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.shadow {
+  background-color: #fff;
+  box-shadow: 0 5px 40px -1px rgb(2 10 18 / 10%);
+}

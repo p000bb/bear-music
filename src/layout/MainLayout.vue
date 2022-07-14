@@ -4,9 +4,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const toPath = (path) => {
-  router.push({
-    path: path,
-  });
+  router.push(path);
 };
 </script>
 

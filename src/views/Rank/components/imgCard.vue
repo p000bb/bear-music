@@ -1,9 +1,14 @@
 <script setup>
 import { numTransform } from "@u/tool.js";
 import { CaretRight } from "@element-plus/icons-vue";
+
 const props = defineProps({
   data: Object,
 });
+const emits = defineEmits(["toPath"]);
+const toPath = (val) => {
+  emits("toPath", `/rank/rank-detail?id=${val.id}`);
+};
 </script>
 
 <template>
@@ -13,7 +18,13 @@ const props = defineProps({
       {{ numTransform(props.data.playCount) }}
     </div>
     <div>
-      <el-image :src="props.data.coverImgUrl" fit="cover" class="img" />
+      <el-image
+        :src="props.data.coverImgUrl"
+        fit="cover"
+        class="img"
+        lazy
+        @click="toPath(props.data)"
+      />
     </div>
     <div class="content">
       {{ props.data.name }}
@@ -22,7 +33,7 @@ const props = defineProps({
 </template>
 <style lang="less" scoped>
 .main {
-  padding: 10px;
+  padding: 10px 15px 5px 15px;
   .num {
     background: rgba(0, 0, 0, 0.3);
     color: #ffffff;
@@ -41,11 +52,10 @@ const props = defineProps({
     line-height: 18px;
     margin-top: 5px;
     font-size: 14px;
-    width: 100px;
   }
   .img {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>

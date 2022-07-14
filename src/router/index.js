@@ -1,8 +1,9 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/homeView.vue";
+import rankRoute from "./rank";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: "/",
@@ -13,14 +14,12 @@ const router = createRouter({
       path: "/home",
       name: "home",
       component: () => import("../views/Home/index.vue"),
+      meta: {
+        title: "首页",
+      },
       layout: "MainLayout",
     },
-    {
-      path: "/rank",
-      name: "rank",
-      component: () => import("../views/Rank/index.vue"),
-      layout: "MainLayout",
-    },
+    rankRoute,
   ],
 });
 

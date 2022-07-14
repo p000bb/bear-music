@@ -5,6 +5,7 @@ import { useRoute } from "vue-router";
 import { ref } from "vue";
 const active = ref("");
 const activeClass = (tip) => {
+  console.log(active.value)
   return active.value === tip ? "active" : "";
 };
 const emits = defineEmits(["toPath"]);
@@ -19,12 +20,10 @@ onMounted(() => {
       name = "rank";
       break;
   }
-  console.log(name)
   active.value = name;
 });
 // 路由跳转
 const go = (path) => {
-  active.value = path;
   emits("toPath", path);
 };
 </script>
@@ -36,8 +35,8 @@ const go = (path) => {
         <span>小熊音乐</span>
       </div>
       <ul class="nav flex-row">
-        <li :class="activeClass('home')" @click="go('home')">首页</li>
-        <li :class="activeClass('rank')" @click="go('rank')">排行榜</li>
+        <li :class="activeClass('home')" @click="go('/home')">首页</li>
+        <li :class="activeClass('rank')" @click="go('/rank')">排行榜</li>
       </ul>
     </div>
   </div>

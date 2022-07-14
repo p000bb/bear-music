@@ -21,4 +21,8 @@ export class rankApi {
   static async toplist(params) {
     return request.get("/toplist/detail", { params });
   }
+  // 获取歌单详情
+  static async playListDetail(params) {
+    return request.get("/playlist/detail", { params });
+  }
 }
