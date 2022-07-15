@@ -25,4 +25,8 @@ export class rankApi {
   static async playListDetail(params) {
     return request.get("/playlist/detail", { params });
   }
+  // 获取所有歌曲的详情
+  static async songDetail(params) {
+    return request.get("/song/detail", { params });
+  }
 }
